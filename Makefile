@@ -21,6 +21,3 @@ run-lambda:
 		--cli-binary-format raw-in-base64-out \
 		--profile me \
 		/dev/null
-
-build-Function: build
-	cp -r dist/* "$(ARTIFACTS_DIR)/"
