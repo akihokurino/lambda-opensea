@@ -7,6 +7,7 @@ build:
 deploy: build
 	zip -r lambda.zip .
 	sam deploy --profile me
+	rm lambda.zip
 
 run-local: build
 	docker run --rm \
