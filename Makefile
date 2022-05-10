@@ -4,13 +4,13 @@ vendor:
 build:
 	npm run build
 
-deploy:
-	zip -9 -j lambda.zip dist/index.js
+deploy: build
+	zip -r lambda.zip .
 	sam deploy --profile me
 
 run-local: build
 	docker run --rm \
-	-v $(PWD)/dist:/var/task \
+	-v $(PWD):/var/task \
   lambci/lambda:nodejs12.x \
   index.handler '{}'
 

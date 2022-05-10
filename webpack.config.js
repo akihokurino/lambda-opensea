@@ -1,39 +1,25 @@
-const path = require("path");
 const nodeExternals = require("webpack-node-externals");
+const path = require("path");
 
 module.exports = {
   mode: "development",
-  target: "node",
-  entry: {
-    handler: path.resolve(__dirname, "./src/index.ts"),
-  },
-  externals: [
-    nodeExternals({
-      modulesFromFile: {
-        exclude: ["dependencies"],
-        include: ["devDependencies"],
-      },
-    }),
-  ],
+  entry: "./src/index.ts",
   output: {
     filename: "index.js",
-    path: path.resolve(__dirname, "dist"),
+    path: path.join(__dirname, ""),
     libraryTarget: "commonjs2",
   },
-  devtool: "inline-source-map",
+  target: "node",
   module: {
     rules: [
       {
         test: /\.ts$/,
-        use: [
-          {
-            loader: "ts-loader",
-          },
-        ],
+        use: "ts-loader",
       },
     ],
   },
   resolve: {
     extensions: [".ts", ".js"],
   },
+  externals: [nodeExternals()],
 };
