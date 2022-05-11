@@ -5,7 +5,7 @@ module.exports = {
   mode: "production",
   entry: "./src/index.ts",
   output: {
-    filename: "index.js",
+    filename: "build/index.js",
     path: path.join(__dirname, ""),
     libraryTarget: "commonjs2",
   },

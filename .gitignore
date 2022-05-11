@@ -1,4 +1,4 @@
 node_modules
-index.js
+build
 lambda.zip
 local.ts

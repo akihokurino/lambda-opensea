@@ -2,7 +2,6 @@ import HDWalletProvider from "@truffle/hdwallet-provider";
 import { Network, OpenSeaPort } from "opensea-js";
 import { OrderSide, WyvernSchemaName } from "opensea-js/lib/types";
 import Web3 from "web3";
-import { Order } from "wyvern-js/lib/types";
 
 const CHAIN_URL =
   "https://rinkeby.infura.io/v3/8c9463fa803f437d952d646c128ebced";
@@ -24,26 +23,7 @@ export class OpenSea {
     });
   }
 
-  getSellOrder = async (
-    tokenAddress: string,
-    tokenId: string
-  ): Promise<Order> => {
-    if (!tokenAddress || !tokenId) {
-      throw new Error("トークン情報が不正です");
-    }
-    if (!Web3.utils.isAddress(tokenAddress)) {
-      throw new Error("トークンアドレスが不正です");
-    }
-
-    const order = await this.seaport.api.getOrder({
-      side: OrderSide.Sell,
-      asset_contract_address: tokenAddress,
-      token_id: tokenId,
-    });
-
-    return order;
-  };
-
+  // TODO: need api key for get order
   buy = async (tokenAddress: string, tokenId: string): Promise<string> => {
     if (!tokenAddress || !tokenId) {
       throw new Error("トークン情報が不正です");

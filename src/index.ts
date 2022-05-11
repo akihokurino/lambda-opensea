@@ -3,12 +3,12 @@ import { WyvernSchemaName } from "opensea-js/lib/types";
 
 type Payload = {
   task: Task;
-  tokenAddress: string;
-  tokenId: string;
-  schemaName: WyvernSchemaName;
   walletAddress: string;
   walletSecret: string;
+  tokenAddress: string;
+  tokenId: string;
   sellEther: number;
+  schemaName: WyvernSchemaName;
   transferAddress: string;
   transferAmount: number;
 };
