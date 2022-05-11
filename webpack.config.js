@@ -20,6 +20,7 @@ module.exports = {
   },
   resolve: {
     extensions: [".ts", ".js"],
+    modules: [path.resolve("./src"), path.resolve("./node_modules")],
   },
   externals: [nodeExternals()],
 };
