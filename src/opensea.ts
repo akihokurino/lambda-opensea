@@ -49,7 +49,9 @@ export class OpenSea {
   sell = async (
     tokenAddress: string,
     tokenId: string,
-    ether: number
+    schemaName: WyvernSchemaName,
+    ether: number,
+    quantity: number
   ): Promise<string> => {
     if (!tokenAddress || !tokenId) {
       throw new Error("トークン情報が不正です");
@@ -67,9 +69,11 @@ export class OpenSea {
       asset: {
         tokenAddress,
         tokenId,
+        schemaName,
       },
       accountAddress: this.walletAddress,
       startAmount: ether,
+      quantity: Math.max(quantity, 1),
       expirationTime,
     });
 

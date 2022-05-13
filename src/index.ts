@@ -8,6 +8,7 @@ type Payload = {
   tokenAddress: string;
   tokenId: string;
   sellEther: number;
+  sellAmount: number;
   schemaName: WyvernSchemaName;
   transferAddress: string;
   transferAmount: number;
@@ -32,7 +33,9 @@ exports.handler = async (payload: Payload): Promise<Response> => {
         await cli.sell(
           payload.tokenAddress,
           payload.tokenId,
-          payload.sellEther
+          payload.schemaName,
+          payload.sellEther,
+          payload.sellAmount
         );
         break;
       case "transfer":
