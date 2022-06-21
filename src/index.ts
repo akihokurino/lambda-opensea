@@ -1,17 +1,25 @@
-import { OpenSea } from "opensea";
-import { WyvernSchemaName } from "opensea-js/lib/types";
+import { readSSM } from "aws";
+import { CreateMetadataPayload, MoralisCli } from "moralis_cli";
+import {
+  BuyPayload,
+  OpenSeaCli,
+  SellPayload,
+  TransferPayload,
+} from "opensea_cli";
 
-type Payload = {
-  task: Task;
+// var credentials = new AWS.SharedIniFileCredentials();
+// AWS.config.credentials = credentials;
+// AWS.config.update({ region: "ap-northeast-1" });
+
+type Request = {
+  method: Method;
   walletAddress: string;
   walletSecret: string;
-  tokenAddress: string;
-  tokenId: string;
-  sellEther: number;
-  sellAmount: number;
-  schemaName: WyvernSchemaName;
-  transferAddress: string;
-  transferAmount: number;
+
+  buyPayload?: BuyPayload;
+  sellPayload?: SellPayload;
+  transferPayload?: TransferPayload;
+  createMetadataPayload?: CreateMetadataPayload;
 };
 
 type Response = {
@@ -19,34 +27,36 @@ type Response = {
   result: number;
 };
 
-type Task = "buy" | "sell" | "transfer";
+type Method = "buy" | "sell" | "transfer" | "createMetadata";
 
-exports.handler = async (payload: Payload): Promise<Response> => {
+exports.handler = async (req: Request): Promise<Response> => {
+  await readSSM();
+
   try {
-    const cli = new OpenSea(payload.walletAddress, payload.walletSecret);
+    const openseaCli = new OpenSeaCli(req.walletAddress, req.walletSecret);
+    const moralisCli = new MoralisCli(
+      process.env.MORALIS_APP_ID!,
+      process.env.MORALIS_MASTER_KEY!,
+      process.env.MORALIS_SERVER_URL!
+    );
 
-    switch (payload.task) {
+    console.log(req);
+
+    switch (req.method) {
       case "buy":
-        await cli.buy(payload.tokenAddress, payload.tokenId);
+        await openseaCli.buy(req.buyPayload!);
         break;
       case "sell":
-        await cli.sell(
-          payload.tokenAddress,
-          payload.tokenId,
-          payload.schemaName,
-          payload.sellEther,
-          payload.sellAmount
-        );
+        await openseaCli.sell(req.sellPayload!);
         break;
       case "transfer":
-        await cli.transfer(
-          payload.tokenAddress,
-          payload.tokenId,
-          payload.schemaName,
-          payload.transferAddress,
-          payload.transferAmount
-        );
+        await openseaCli.transfer(req.transferPayload!);
         break;
+      case "createMetadata":
+        await moralisCli.uploadIpfs(req.createMetadataPayload!);
+        break;
+      default:
+        throw new Error("サポートしていないメソッドです");
     }
 
     console.log("成功");

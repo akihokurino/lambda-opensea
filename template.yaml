@@ -3,11 +3,26 @@ Transform: AWS::Serverless-2016-10-31
 Globals:
   Function:
     Timeout: 900
+
+Parameters:
+  SsmParameter:
+    Type: String
+    Default: /lambda-opensea/server/dotenv
+    Description: ssm parameter path
+
 Resources:
   Function:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: ./lambda.zip
-      Runtime: nodejs16.x
-      Handler: index.handler
+      PackageType: Image
       MemorySize: 512
+      Environment:
+        Variables:
+          SSM_PARAMETER: !Ref SsmParameter
+      Policies:
+        - AmazonSSMReadOnlyAccess
+        - AmazonS3FullAccess
+    Metadata:
+      DockerTag: latest
+      DockerContext: ./
+      Dockerfile: Dockerfile

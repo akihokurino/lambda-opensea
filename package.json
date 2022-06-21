@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/aws-sdk": "^2.7.0",
     "@types/node": "^14.18.12",
     "ts-loader": "^9.2.6",
     "ts-node": "^10.5.0",
@@ -19,8 +20,10 @@
     "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
-    "@truffle/hdwallet-provider": "^2.0.8",
-    "opensea-js": "^3.0.4",
+    "@truffle/hdwallet-provider": "^2.0.9",
+    "aws-sdk": "^2.1158.0",
+    "moralis": "^1.8.0",
+    "opensea-js": "^4.0.2",
     "web3": "^1.7.3"
   }
 }

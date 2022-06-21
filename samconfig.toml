@@ -4,7 +4,6 @@ version = 0.1
 [default.deploy.parameters]
 capabilities = "CAPABILITY_IAM"
 confirm_changeset = false
-fail_on_empty_changeset = false
 region = "ap-northeast-1"
 s3_bucket = "lambda-opensea-artifact"
 stack_name = "lambda-opensea"
