@@ -1,7 +1,6 @@
 const Moralis = require("moralis/node");
 
 export type CreateMetadataPayload = {
-  path: string;
   name: string;
   description: string;
   externalUrl: string;
