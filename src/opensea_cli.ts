@@ -21,7 +21,6 @@ export type TransferPayload = {
   tokenId: string;
   schemaName: WyvernSchemaName;
   transferAddress: string;
-  transferAmount: number;
   quantity: number;
 };
 
