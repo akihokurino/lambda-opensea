@@ -40,6 +40,7 @@ export class MoralisCli {
       ),
     });
     await metadataFile.saveIPFS({ useMasterKey: true });
+
     const metadataHash = metadataFile.hash();
     const metadataUrl = metadataFile.ipfs();
 

@@ -25,6 +25,12 @@ type Request = {
 type Response = {
   message: string;
   result: number;
+  ipfsResponse?: IPFSResponse;
+};
+
+type IPFSResponse = {
+  hash: string;
+  url: string;
 };
 
 type Method = "buy" | "sell" | "transfer" | "createMetadata";
@@ -45,28 +51,39 @@ exports.handler = async (req: Request): Promise<Response> => {
     switch (req.method) {
       case "buy":
         await openseaCli.buy(req.buyPayload!);
-        break;
+        return {
+          message: "",
+          result: 0,
+        };
       case "sell":
         await openseaCli.sell(req.sellPayload!);
-        break;
+        return {
+          message: "",
+          result: 0,
+        };
       case "transfer":
         await openseaCli.transfer(req.transferPayload!);
-        break;
+        return {
+          message: "",
+          result: 0,
+        };
       case "createMetadata":
-        await moralisCli.uploadIpfs(req.createMetadataPayload!);
-        break;
+        const data = await moralisCli.uploadIpfs(req.createMetadataPayload!);
+        console.log(`IPFS hash: ${data.hash}`);
+        console.log(`IPFS url: ${data.url}`);
+        return {
+          message: "",
+          result: 0,
+          ipfsResponse: {
+            hash: data.hash,
+            url: data.url,
+          },
+        };
       default:
         throw new Error("サポートしていないメソッドです");
     }
-
-    console.log("成功");
-    return {
-      message: "",
-      result: 0,
-    };
   } catch (e: any) {
-    console.log("失敗");
-    console.log(e);
+    console.log(`エラー: ${e}`);
     return {
       message: e.message,
       result: 1,

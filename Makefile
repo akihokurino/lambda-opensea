@@ -3,6 +3,7 @@ WALLET_SECRET :=
 TOKEN_ADDRESS := 0xc35e34af505b79132857e117ad7031297cc2cd35
 TOKEN_ID := 8
 SCHEMA_NAME := ERC721
+IMAGE_BASE64 := 
 
 vendor:
 	npm install
@@ -51,6 +52,24 @@ lambda-buy:
 			\"buyPayload\": { \
 				\"tokenAddress\": \"$(TOKEN_ADDRESS)\", \
 				\"tokenId\": \"$(TOKEN_ID)\" \
+			} \
+		}" \
+		--cli-binary-format raw-in-base64-out \
+		--profile me \
+		/dev/null
+
+lambda-create-metadata:
+	aws lambda invoke \
+		--function-name lambda-opensea-Function-E5REgOxitk1E \
+		--payload "{ \
+			\"method\": \"createMetadata\", \
+			\"walletAddress\": \"$(WALLET_ADDRESS)\", \
+			\"walletSecret\": \"$(WALLET_SECRET)\", \
+			\"createMetadataPayload\": { \
+				\"name\": \"metadata test\", \
+				\"description\": \"for test\", \
+				\"externalUrl\": \"https://opensea.io\", \
+				\"imageBase64\": \"$(IMAGE_BASE64)\" \
 			} \
 		}" \
 		--cli-binary-format raw-in-base64-out \
