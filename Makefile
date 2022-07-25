@@ -6,7 +6,7 @@ SCHEMA_NAME := ERC721
 IMAGE_BASE64 := 
 
 vendor:
-	npm install
+	yarn install
 
 .PHONY: build
 build:
