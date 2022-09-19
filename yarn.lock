@@ -1105,7 +1105,7 @@
   resolved "https://registry.yarnpkg.com/@noble/secp256k1/-/secp256k1-1.6.3.tgz#7eed12d9f4404b416999d0c87686836c4c5c9b94"
   integrity sha512-T04e4iTurVy7I8Sw4+c5OSN9/RkPlo1uKxAomtxQNLq8j1uPAqnsqG1bqvY3Jv7c13gyr6dui0zmh/I3+f/JaQ==
 
-"@opensea/seaport-js@^1.0.6":
+"@opensea/seaport-js@^1.0.2":
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/@opensea/seaport-js/-/seaport-js-1.0.6.tgz#876297d4216a356d3ca3335f015f1d1f90a53d3d"
   integrity sha512-XHVNjlr3UOJbX64MoxcztUSEbYtl5x33wuby+ysQKGJUyAfsO7ZdLgwyE/lK7nwIWmxJ0zSy3I4+NJWh0DyOEQ==
@@ -2843,9 +2843,10 @@ ethereum-types@^3.6.0, ethereum-types@^3.7.0, ethereum-types@^3.7.1:
     "@types/node" "12.12.54"
     bignumber.js "~9.0.2"
 
-ethereumjs-abi@^0.6.8, "ethereumjs-abi@git+https://github.com/ethereumjs/ethereumjs-abi.git":
+ethereumjs-abi@^0.6.8:
   version "0.6.8"
-  resolved "git+https://github.com/ethereumjs/ethereumjs-abi.git#ee3994657fa7a427238e6ba92a84d0b529bbcde0"
+  resolved "https://registry.yarnpkg.com/ethereumjs-abi/-/ethereumjs-abi-0.6.8.tgz#71bc152db099f70e62f108b7cdfca1b362c6fcae"
+  integrity sha512-Tx0r/iXI6r+lRsdvkFDlut0N08jWMnKRZ6Gkq+Nmw75lZe4e6o3EkSnkaBP5NF6+m5PTGAr9JP43N3LyeoglsA==
   dependencies:
     bn.js "^4.11.8"
     ethereumjs-util "^6.0.0"
@@ -2856,6 +2857,13 @@ ethereumjs-abi@^0.6.8, "ethereumjs-abi@git+https://github.com/ethereumjs/ethereu
   dependencies:
     bn.js "^4.10.0"
     ethereumjs-util "^4.3.0"
+
+"ethereumjs-abi@git+https://github.com/ethereumjs/ethereumjs-abi.git":
+  version "0.6.8"
+  resolved "git+https://github.com/ethereumjs/ethereumjs-abi.git#ee3994657fa7a427238e6ba92a84d0b529bbcde0"
+  dependencies:
+    bn.js "^4.11.8"
+    ethereumjs-util "^6.0.0"
 
 "ethereumjs-abi@https://github.com/ProjectWyvern/ethereumjs-abi.git":
   version "0.6.6"
@@ -4655,12 +4663,12 @@ once@^1.3.1, once@^1.4.0:
   dependencies:
     wrappy "1"
 
-opensea-js@^4.0.11:
-  version "4.0.11"
-  resolved "https://registry.yarnpkg.com/opensea-js/-/opensea-js-4.0.11.tgz#43972a47ff15b59e9e1fd4cdeb06650c3d0e3885"
-  integrity sha512-c3vQncGn8k7C4xEn0GAIlJhyv8fwgXhQOMXb6j82ku7hKzVpsv3u/0eJ2qWTSfj9Cdg99Ao9eq1aIhPXzQg1ng==
+opensea-js@4.0.10:
+  version "4.0.10"
+  resolved "https://registry.yarnpkg.com/opensea-js/-/opensea-js-4.0.10.tgz#f3e35aa1f8a423f1041df35f7eb17b7ea0d6b922"
+  integrity sha512-nFID6NpBsRKhxcnzY0lBvJfSNY7ulGWqKrFft69StTM/nLuGlIPIEYBGRZHyT2P9BhU30ujSQXg2JUpaRCPezg==
   dependencies:
-    "@opensea/seaport-js" "^1.0.6"
+    "@opensea/seaport-js" "^1.0.2"
     ajv "^8.11.0"
     bignumber.js "9.0.2"
     ethereumjs-abi "git+https://github.com/ProjectWyvern/ethereumjs-abi.git"

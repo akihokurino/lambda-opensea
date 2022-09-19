@@ -1,8 +1,8 @@
 WALLET_ADDRESS := 0x1341048E3d37046Ca18A09EFB154Ea9771744f41
 WALLET_SECRET := 
-TOKEN_ADDRESS := 0x2859b7d8d683434c2ee30ff461c026c279e4fa41
-TOKEN_ID := 2
-SCHEMA_NAME := ERC721
+TOKEN_ADDRESS := 0x7cf53af478a40ae0F2cBE22118680dB11655feF9
+TOKEN_ID := 1
+SCHEMA_NAME := ERC1155
 IMAGE_BASE64 := 
 
 vendor:
@@ -34,7 +34,7 @@ lambda-sell:
 				\"tokenAddress\": \"$(TOKEN_ADDRESS)\", \
 				\"tokenId\": \"$(TOKEN_ID)\", \
 				\"schemaName\": \"$(SCHEMA_NAME)\", \
-				\"ether\": 0.1, \
+				\"ether\": 0.01, \
 				\"quantity\": 1 \
 			} \
 		}" \
