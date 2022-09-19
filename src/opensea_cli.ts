@@ -37,7 +37,7 @@ export class OpenSeaCli {
 
     const provider = new HDWalletProvider(walletSecret, process.env.CHAIN_URL!);
     this.seaport = new OpenSeaPort(provider, {
-      networkName: Network.Rinkeby,
+      networkName: Network.Goerli,
     });
   }
 
