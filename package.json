@@ -20,10 +20,7 @@
     "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
-    "@truffle/hdwallet-provider": "^2.0.12",
     "aws-sdk": "^2.1158.0",
-    "moralis": "^1.8.0",
-    "opensea-js": "4.0.10",
-    "web3": "^1.7.4"
+    "opensea-js": "^6.1.4"
   }
 }
